@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login - FoodGo</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            background: #fff5ef;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 370px;
+
+            background: white;
+
+            padding: 30px 25px;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.1);
+
+            text-align: center;
+        }
+
+        /* LOGO */
+
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ff6b35;
+
+            border-radius: 20px;
+
+            font-size: 35px;
+        }
+
+        .logo {
+            color: #ff6b35;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        .subtitle {
+            color: #888;
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        /* FORM */
+
+        .form-group {
+            text-align: left;
+
+            margin-bottom: 17px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ddd;
+
+            border-radius: 10px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            background: #fafafa;
+        }
+
+        input:focus {
+            border-color: #ff6b35;
+
+            background: white;
+        }
+
+        /* BUTTON */
+
+        .login-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 5px;
+
+            border: none;
+
+            border-radius: 10px;
+
+            background: #ff6b35;
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #e85a28;
+        }
+
+        /* FOOTER */
+
+        .footer {
+            margin-top: 20px;
+
+            color: #aaa;
+
+            font-size: 11px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 400px) {
+
+            .login-box {
+                padding: 28px 20px;
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <!-- LOGO -->
+
+        <div class="logo-icon">
+            🍴
+        </div>
+
+        <div class="logo">
+            FoodGo
+        </div>
+
+        <p class="subtitle">
+            Pesan makanan favoritmu dengan mudah 🍔
+        </p>
+
+
+        <!-- NAMA -->
+
+        <div class="form-group">
+
+            <label for="nama">
+                Nama
+            </label>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Masukkan nama kamu"
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="form-group">
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Masukkan password"
+            >
+
+        </div>
+
+
+        <!-- LOGIN BUTTON -->
+
+        <button
+            class="login-btn"
+            onclick="login()"
+        >
+            Masuk
+        </button>
+
+
+        <p class="footer">
+            Selamat datang di FoodGo ❤️
+        </p>
+
+    </div>
+
+
+    <script>
+
+        function login() {
+
+            let nama =
+                document.getElementById("nama").value.trim();
+
+            let password =
+                document.getElementById("password").value.trim();
+
+
+            /* Cek nama */
+
+            if (nama === "") {
+
+                alert("Nama harus diisi!");
+
+                return;
+
+            }
+
+
+            /* Cek password */
+
+            if (password === "") {
+
+                alert("Password harus diisi!");
+
+                return;
+
+            }
+
+
+            /* Simpan nama */
+
+            localStorage.setItem(
+                "namaPengguna",
+                nama
+            );
+
+            localStorage.removeItem("namaPemesan");
+            localStorage.removeItem("kelasPemesan");
+            localStorage.removeItem("alamatPemesan");
+            localStorage.removeItem("pembayaran");
+
+
+            /* Masuk ke halaman makanan */
+
+            window.location.href =
+                "makanan.html";
+
+        }
+
+    </script>
+
+</body>
+</html>
